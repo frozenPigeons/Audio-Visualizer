@@ -54,7 +54,7 @@ function play() {
 
     var smallers = new THREE.IcosahedronGeometry(3, 3);
     
-    for (let i = 0; i < 250; i++) {
+    for (let i = 0; i < 75; i++) {
       var balls = new THREE.Mesh(smallers, material);
       balls.position.x = (Math.random() - 0.5) * 750
       balls.position.y = (Math.random() - 0.5) * 1000
@@ -63,7 +63,7 @@ function play() {
       group.add(balls)
     }
 
-    for (let i = 0; i <800; i++) {
+    for (let i = 0; i < 120; i++) {
       var smaller = new THREE.Mesh(
         new THREE.SphereGeometry(0.25, 24, 24),
         new THREE.MeshBasicMaterial( { color: 0xffffff } )
