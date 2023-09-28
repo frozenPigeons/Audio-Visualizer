@@ -36,44 +36,16 @@ function play() {
     camera.position.set(0,0,100);
     camera.lookAt(scene.position);
     scene.add(camera);
-    
 
     var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     var icosahedronGeometry = new THREE.IcosahedronGeometry(10, 5);
-    //var mapping = new THREE.TextureLoader().load('mapping.png');
     var material = new THREE.MeshNormalMaterial();
-    
-
-    // var normal = new THREE.MeshNormalMaterial();
 
     var ball = new THREE.Mesh(icosahedronGeometry, material);
     ball.position.set(0, 0, 0);
     group.add(ball);
-
-    var smallers = new THREE.IcosahedronGeometry(3, 3);
-    
-    for (let i = 0; i < 75; i++) {
-      var balls = new THREE.Mesh(smallers, material);
-      balls.position.x = (Math.random() - 0.5) * 750
-      balls.position.y = (Math.random() - 0.5) * 1000
-      balls.position.z = (Math.random() - 0.5) * 750
-
-      group.add(balls)
-    }
-
-    for (let i = 0; i < 120; i++) {
-      var smaller = new THREE.Mesh(
-        new THREE.SphereGeometry(0.25, 24, 24),
-        new THREE.MeshBasicMaterial( { color: 0xffffff } )
-      );
-      
-      smaller.position.x = (Math.random() - 0.5) * 750
-      smaller.position.y = (Math.random() - 0.5) * 750
-      smaller.position.z = (Math.random() - 0.5) * 750
-      group.add(smaller);
-    }
 
     scene.add(group);
 
@@ -104,7 +76,6 @@ function play() {
       } else if (overallAvg > 60) {
         colour += (overallAvg/2)
         document.body.style.backgroundColor = 'rgb(' + colour + ',' + colour + ',' + colour + ')';
-        console.log(overallAvg)
       }
 
       var lowerMaxFr = lowerMax / lowerHalfArray.length;
@@ -112,9 +83,9 @@ function play() {
       var upperMaxFr = upperMax / upperHalfArray.length;
       var upperAvgFr = upperAvg / upperHalfArray.length;
 
-    //   makeRoughGround(plane, modulate(upperAvgFr, 0, 1, 0.5, 4)); Call small ball move function here
-    //   makeRoughGround(plane2, modulate(lowerMaxFr, 0, 1, 0.5, 4));
-      
+      makeRoughGround(plane, modulate(upperAvgFr, 0, 1, 0.5, 4)); Call small ball move function here
+      makeRoughGround(plane2, modulate(lowerMaxFr, 0, 1, 0.5, 4));
+       
       makeRoughBall(ball, modulate(Math.pow(lowerMaxFr, 0.8), 0, 1, 0, 8), modulate(upperAvgFr, 0, 1, 0, 4));
 
       group.rotation.y += 0.005;
