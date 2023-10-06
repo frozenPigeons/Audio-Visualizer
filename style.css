@@ -2,15 +2,15 @@ audio {
   visibility: hidden;
 }
 
-audio.active{
+audio.active {
   visibility: hidden;
 }
 
-#thefile{
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+#thefile {
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
 
 html {
@@ -29,7 +29,7 @@ body {
   place-content: center;
 }
 
-h1::before {  
+h1::before {
   transform: scaleX(0);
   transform-origin: bottom right;
 }
@@ -43,7 +43,10 @@ h1::before {
   content: " ";
   display: block;
   position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   color: white;
   background: rgb(20, 20, 20);
   z-index: -1;
@@ -71,4 +74,14 @@ label {
   position: relative;
   display: grid;
   place-content: center;
+}
+
+h1.file.normal {
+  background-color: rgb(20, 20, 20);
+  color: white;
+  cursor: pointer;
+}
+
+label.file {
+  background-color: rgb(20, 20, 20);
 }

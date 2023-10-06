@@ -32,8 +32,8 @@ var vizInit = function () {
     var dataArray = new Uint8Array(bufferLength);
     var scene = new THREE.Scene();
     var group = new THREE.Group();
-    var camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.01, 1000);
-    camera.position.set(0, 0, 105);
+    var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 1000);
+    camera.position.set(0, 0, 100);
     //camera.lookAt(scene.position);
     scene.add(camera);
 
@@ -41,7 +41,7 @@ var vizInit = function () {
     var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    var icosahedronGeometry = new THREE.IcosahedronGeometry(10, 5);
+    var icosahedronGeometry = new THREE.IcosahedronGeometry(15, 5);
     //var mapping = new THREE.TextureLoader().load('mapping.png');
     var material = new THREE.MeshNormalMaterial();
 
