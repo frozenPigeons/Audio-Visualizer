@@ -82,6 +82,6 @@ h1.file.normal {
   cursor: pointer;
 }
 
-label.file {
+label.file.normal {
   background-color: rgb(20, 20, 20);
 }
