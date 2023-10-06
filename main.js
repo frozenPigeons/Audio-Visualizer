@@ -1,27 +1,27 @@
 var noise = new SimplexNoise();
-var vizInit = function (){
-  
+var vizInit = function () {
+
   var file = document.getElementById("thefile");
   var audio = document.getElementById("audio");
   var fileLabel = document.querySelector("h1.file");
-  
-  document.onload = function(e){
+
+  document.onload = function (e) {
     audio.play();
     play();
   }
 
-  file.onchange = function(){
+  file.onchange = function () {
     fileLabel.classList.add('normal');
     audio.classList.add('active');
     var files = this.files;
-    
+
     audio.src = URL.createObjectURL(files[0]);
     audio.load();
     audio.play();
     play();
   }
-  
-function play() {
+
+  function play() {
     var context = new AudioContext();
     var src = context.createMediaElementSource(audio);
     var analyser = context.createAnalyser();
@@ -33,10 +33,10 @@ function play() {
     var scene = new THREE.Scene();
     var group = new THREE.Group();
     var camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.01, 1000);
-    camera.position.set(0,0,120);
+    camera.position.set(0, 0, 105);
     //camera.lookAt(scene.position);
     scene.add(camera);
-    
+
 
     var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -44,7 +44,7 @@ function play() {
     var icosahedronGeometry = new THREE.IcosahedronGeometry(10, 5);
     //var mapping = new THREE.TextureLoader().load('mapping.png');
     var material = new THREE.MeshNormalMaterial();
-    
+
 
     // var normal = new THREE.MeshNormalMaterial();
 
@@ -53,7 +53,7 @@ function play() {
     group.add(ball);
 
     var smallers = new THREE.IcosahedronGeometry(3, 3);
-    
+
     for (let i = 0; i < 250; i++) {
       var balls = new THREE.Mesh(smallers, material);
       balls.position.x = (Math.random() - 0.5) * 750
@@ -63,12 +63,12 @@ function play() {
       group.add(balls)
     }
 
-    for (let i = 0; i <800; i++) {
+    for (let i = 0; i < 800; i++) {
       var smaller = new THREE.Mesh(
         new THREE.SphereGeometry(0.25, 24, 24),
-        new THREE.MeshBasicMaterial( { color: 0xffffff } )
+        new THREE.MeshBasicMaterial({ color: 0xffffff })
       );
-      
+
       smaller.position.x = (Math.random() - 0.5) * 750
       smaller.position.y = (Math.random() - 0.5) * 750
       smaller.position.z = (Math.random() - 0.5) * 750
@@ -86,8 +86,8 @@ function play() {
     function render() {
       analyser.getByteFrequencyData(dataArray);
 
-      var lowerHalfArray = dataArray.slice(0, (dataArray.length/2) - 1);
-      var upperHalfArray = dataArray.slice((dataArray.length/2) - 1, dataArray.length - 1);
+      var lowerHalfArray = dataArray.slice(0, (dataArray.length / 2) - 1);
+      var upperHalfArray = dataArray.slice((dataArray.length / 2) - 1, dataArray.length - 1);
 
 
       var overallAvg = avg(dataArray);
@@ -102,15 +102,15 @@ function play() {
         colour = 15
         document.body.style.backgroundColor = 'rgb(' + colour + ',' + colour + ',' + colour + ')';
       } else if (overallAvg > 60) {
-        colour += (overallAvg/2)
+        colour += (overallAvg / 2)
         document.body.style.backgroundColor = 'rgb(' + colour + ',' + colour + ',' + colour + ')';
       }
 
-      var lowerMaxFr = lowerMax / lowerHalfArray.length /2;
+      var lowerMaxFr = lowerMax / lowerHalfArray.length / 1.25;
       var lowerAvgFr = lowerAvg / lowerHalfArray.length;
       var upperMaxFr = upperMax / upperHalfArray.length;
-      var upperAvgFr = upperAvg / upperHalfArray.length /2;
-      
+      var upperAvgFr = upperAvg / upperHalfArray.length / 1.25;
+
       makeRoughBall(ball, modulate(Math.pow(lowerMaxFr, 0.8), 0, 1, 0, 8), modulate(upperAvgFr, 0, 1, 0, 4));
 
       group.rotation.y += 0.005;
@@ -124,25 +124,25 @@ function play() {
 
 
     function onWindowResize() {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
     }
 
     function makeRoughBall(mesh, bassFr, treFr) {
-        mesh.geometry.vertices.forEach(function (vertex, i) {
-            var offset = mesh.geometry.parameters.radius;
-            var amp = 7;
-            var time = window.performance.now();
-            vertex.normalize();
-            var rf = 0.00001;
-            var distance = (offset + bassFr ) + noise.noise3D(vertex.x + time *rf*7, vertex.y +  time*rf*8, vertex.z + time*rf*9) * amp * treFr;
-            vertex.multiplyScalar(distance);
-        });
-        mesh.geometry.verticesNeedUpdate = true;
-        mesh.geometry.normalsNeedUpdate = true;
-        mesh.geometry.computeVertexNormals();
-        mesh.geometry.computeFaceNormals();
+      mesh.geometry.vertices.forEach(function (vertex, i) {
+        var offset = mesh.geometry.parameters.radius;
+        var amp = 7;
+        var time = window.performance.now();
+        vertex.normalize();
+        var rf = 0.00001;
+        var distance = (offset + bassFr) + noise.noise3D(vertex.x + time * rf * 7, vertex.y + time * rf * 8, vertex.z + time * rf * 9) * amp * treFr;
+        vertex.multiplyScalar(distance);
+      });
+      mesh.geometry.verticesNeedUpdate = true;
+      mesh.geometry.normalsNeedUpdate = true;
+      mesh.geometry.computeVertexNormals();
+      mesh.geometry.computeFaceNormals();
     }
 
     //small ball move function
@@ -165,23 +165,23 @@ function play() {
 
 window.onload = vizInit();
 
-document.body.addEventListener('touchend', function(ev) { context.resume(); });
+document.body.addEventListener('touchend', function (ev) { context.resume(); });
 
 function fractionate(val, minVal, maxVal) {
-    return (val - minVal)/(maxVal - minVal);
+  return (val - minVal) / (maxVal - minVal);
 }
 
 function modulate(val, minVal, maxVal, outMin, outMax) {
-    var fr = fractionate(val, minVal, maxVal);
-    var delta = outMax - outMin;
-    return outMin + (fr * delta);
+  var fr = fractionate(val, minVal, maxVal);
+  var delta = outMax - outMin;
+  return outMin + (fr * delta);
 }
 
-function avg(arr){
-    var total = arr.reduce(function(sum, b) { return sum + b; });
-    return (total / arr.length);
+function avg(arr) {
+  var total = arr.reduce(function (sum, b) { return sum + b; });
+  return (total / arr.length);
 }
 
-function max(arr){
-    return arr.reduce(function(a, b){ return Math.max(a, b); })
+function max(arr) {
+  return arr.reduce(function (a, b) { return Math.max(a, b); })
 }

@@ -1,2 +1,6 @@
 # ThreeJs-Audio-Visualizer
-A 3D audio visualizer built using ThreeJs.
+Threejs audio visualizer
+Uses the Threejs library to convert music into a visual representation.
+https://frozenpigeons.github.io/ThreeJs-Audio-Visualizer/
+
+There is a small chance that bit crushed music may cause irregularities. Please refresh the page if this occurs.
