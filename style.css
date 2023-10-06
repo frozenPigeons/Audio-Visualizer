@@ -1,96 +1,75 @@
-:root{
-    --bgColor : #0f0f0f;
-    --textColor : hsla(242, 86%, 88%, 1);
-    --textColorDark : hsla(242, 36%, 0%, 1);
-    --paperColor: hsla(242, 86%, 44%, 1);
-    --paperColorDark: hsla(242, 86%, 34%, 1);
-    --shadowColorFaint: hsla(0, 0%, 0%, 0.2);
-  }
-  
-  ::selected{
-    color: var(--textColorDark);
-  }
-  
-  html, body{
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    height: 100vh;
-    width: 100vw;
-    background: var(--bgColor);
-    color: var(--textColor);
-    font-family: 'Saira', sans-serif;
-    position: relative;
-  }
-  
-  *{
-    box-sizing: border-box;
-    transition: all 0.12s cubic-bezier(0.42, 0.54, 0.22, 1.26);
-  }
-  
-  #canvas {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  audio {
-    position: fixed;
-    left: 10px;
-    bottom: -10px;
-    width: calc(100% - 20px);
-    visibility: hidden;
-  }
-  
-  audio.active{
-    bottom: 10px;
-    visibility: hidden;
-  }
-  
-  #thefile{
-    width: 0.1px;
-      height: 0.1px;
-      opacity: 0;
-      overflow: hidden;
-      position: absolute;
-      z-index: 1;
-  }
-  
-  label.file{
-    display: inline-block;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    padding: 1rem 2rem;
-    border-radius: 4px;
-    
-    background: var(--paperColor);
-    color: var(--textColor);
-    font-size: 1.25em;
-    font-weight: 700;
-    box-shadow: 0 20px 60px var(--shadowColorFaint);
-    cursor: pointer;
-  }
-  
-  
-  
-  label.file:hover{
-      background: var(--paperColorDark);
-      transform: translate3d(-50%, -55%, 0);
-  }
-  
-  label.file:active{
-      background: var(--paperColorDark);
-      transform: translate3d(-50%, -45%, 0);
-  }
-  
-  label.file.normal{
-    transform: translate3d(10%, 50%, 0);
-    padding: 0.2rem 2rem;
-    font-size: 1rem;
-    top: 0;
-    left: 0;
-  }
+audio {
+  visibility: hidden;
+}
+
+audio.active{
+  visibility: hidden;
+}
+
+#thefile{
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+html {
+  font-family: system-ui, sans-serif;
+  block-size: 100%;
+  inline-size: 100%;
+  overflow: hidden;
+}
+
+body {
+  min-block-size: 100%;
+  min-inline-size: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  display: grid;
+  place-content: center;
+}
+
+h1::before {  
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+h1:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+h1::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  color: white;
+  background: rgb(20, 20, 20);
+  z-index: -1;
+  transition: transform 0.9s ease;
+}
+
+h1:after {
+  z-index: 2;
+  font-size: 5rem;
+  cursor: pointer;
+  transition: all 2.2s;
+}
+
+h1 {
+  margin: 12px;
+  color: rgb(65, 65, 65);
+  transition: all 1s;
+}
+
+h1:hover {
+  color: white;
+}
+
+label {
+  position: relative;
+  display: grid;
+  place-content: center;
+}
+

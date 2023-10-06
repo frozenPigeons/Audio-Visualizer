@@ -3,7 +3,7 @@ var vizInit = function (){
   
   var file = document.getElementById("thefile");
   var audio = document.getElementById("audio");
-  var fileLabel = document.querySelector("label.file");
+  var fileLabel = document.querySelector("h1.file");
   
   document.onload = function(e){
     audio.play();
@@ -32,9 +32,9 @@ function play() {
     var dataArray = new Uint8Array(bufferLength);
     var scene = new THREE.Scene();
     var group = new THREE.Group();
-    var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 1000);
-    camera.position.set(0,0,100);
-    camera.lookAt(scene.position);
+    var camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.01, 1000);
+    camera.position.set(0,0,120);
+    //camera.lookAt(scene.position);
     scene.add(camera);
     
 
@@ -104,16 +104,12 @@ function play() {
       } else if (overallAvg > 60) {
         colour += (overallAvg/2)
         document.body.style.backgroundColor = 'rgb(' + colour + ',' + colour + ',' + colour + ')';
-        console.log(overallAvg)
       }
 
-      var lowerMaxFr = lowerMax / lowerHalfArray.length;
+      var lowerMaxFr = lowerMax / lowerHalfArray.length /2;
       var lowerAvgFr = lowerAvg / lowerHalfArray.length;
       var upperMaxFr = upperMax / upperHalfArray.length;
-      var upperAvgFr = upperAvg / upperHalfArray.length;
-
-    //   makeRoughGround(plane, modulate(upperAvgFr, 0, 1, 0.5, 4)); Call small ball move function here
-    //   makeRoughGround(plane2, modulate(lowerMaxFr, 0, 1, 0.5, 4));
+      var upperAvgFr = upperAvg / upperHalfArray.length /2;
       
       makeRoughBall(ball, modulate(Math.pow(lowerMaxFr, 0.8), 0, 1, 0, 8), modulate(upperAvgFr, 0, 1, 0, 4));
 
@@ -124,6 +120,7 @@ function play() {
 
       requestAnimationFrame(render);
     }
+
 
 
     function onWindowResize() {
