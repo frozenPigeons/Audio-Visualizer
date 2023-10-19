@@ -56,7 +56,7 @@ var vizInit = function () {
 
     var smallers = new THREE.IcosahedronGeometry(3, 3);
 
-    for (let i = 0; i < 250; i++) {
+    for (let i = 0; i < 0; i++) {
       var balls = new THREE.Mesh(smallers, material);
       balls.position.x = (Math.random() - 0.5) * 750
       balls.position.y = (Math.random() - 0.5) * 1000
@@ -65,9 +65,9 @@ var vizInit = function () {
       group.add(balls)
     }
 
-    for (let i = 0; i < 800; i++) {
+    for (let i = 0; i < 8000; i++) {
       var smaller = new THREE.Mesh(
-        new THREE.SphereGeometry(0.25, 24, 24),
+        new THREE.SphereGeometry(0.25, 6, 6),
         new THREE.MeshBasicMaterial({ color: 0xffffff })
       );
 
@@ -108,10 +108,10 @@ var vizInit = function () {
         document.body.style.backgroundColor = 'rgb(' + colour + ',' + colour + ',' + colour + ')';
       }
 
-      var lowerMaxFr = lowerMax / lowerHalfArray.length / 1.75;
+      var lowerMaxFr = lowerMax / lowerHalfArray.length / 1.85;
       var lowerAvgFr = lowerAvg / lowerHalfArray.length;
       var upperMaxFr = upperMax / upperHalfArray.length;
-      var upperAvgFr = upperAvg / upperHalfArray.length / 1.75;
+      var upperAvgFr = upperAvg / upperHalfArray.length / 1.85;
 
       makeRoughBall(ball, modulate(Math.pow(lowerMaxFr, 0.8), 0, 1, 0, 8), modulate(upperAvgFr, 0, 1, 0, 4));
 

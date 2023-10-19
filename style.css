@@ -71,9 +71,9 @@ h1:hover {
 }
 
 label {
-  position: relative;
   display: grid;
   place-content: center;
+  cursor: pointer;
 }
 
 h1.file.normal {
