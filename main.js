@@ -34,21 +34,17 @@ var vizInit = function () {
     var dataArray = new Uint8Array(bufferLength);
     var scene = new THREE.Scene();
     var group = new THREE.Group();
-    var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 1000);
+    var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 750);
     camera.position.set(0, 0, 100);
     //camera.lookAt(scene.position);
     scene.add(camera);
 
-
     var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    var icosahedronGeometry = new THREE.IcosahedronGeometry(10, 5);
+    var icosahedronGeometry = new THREE.IcosahedronGeometry(15, 5);
     //var mapping = new THREE.TextureLoader().load('mapping.png');
     var material = new THREE.MeshNormalMaterial();
-
-
-    // var normal = new THREE.MeshNormalMaterial();
 
     var ball = new THREE.Mesh(icosahedronGeometry, material);
     ball.position.set(0, 0, 0);
@@ -109,12 +105,12 @@ var vizInit = function () {
       }
 
       var lowerMaxFr = lowerMax / lowerHalfArray.length / 1.875;
-      var lowerAvgFr = lowerAvg / lowerHalfArray.length / 1.875;
-      var upperMaxFr = upperMax / upperHalfArray.length / 1.875;
+      var lowerAvgFr = lowerAvg / lowerHalfArray.length / 4.5;
+      var upperMaxFr = upperMax / upperHalfArray.length / 4.5;
       var upperAvgFr = upperAvg / upperHalfArray.length / 1.875;
 
       makeRoughBall(ball, modulate(Math.pow(lowerMaxFr, 0.8), 0, 1, 0, 8), modulate(upperAvgFr, 0, 1, 0, 4));
-      makeRoughBall(ball, modulate(Math.pow(lowerAvgFr, 0.8), 0, 1, 0, 8), modulate(upperMaxFr, 0, 1, 0, 4));
+      makeRoughBall(ball, modulate(Math.pow(lowerAvgFr, 0.3), 0, 1, 0, 8), modulate(upperMaxFr, 0, 1, 0, 4));
 
       group.rotation.y += 0.005;
       group.rotation.z += 0.002;
