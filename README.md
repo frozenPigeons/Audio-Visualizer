@@ -4,3 +4,8 @@ Uses the Threejs library to convert music into a visual representation.
 [https://frozenpigeons.github.io/ThreeJs-Audio-Visualizer/](https://frozenpigeons.github.io/Audio-Visualizer/)
 
 There is a small chance that bit crushed music may cause irregularities. Please refresh the page if this occurs.
+
+Demo:
+
+
+[![Video]](https://youtu.be/Gy7bzx0A90I)
