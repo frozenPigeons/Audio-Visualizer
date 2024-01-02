@@ -1,5 +1,3 @@
-import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
-
 var noise = new SimplexNoise();
 var vizInit = function () {
 
