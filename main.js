@@ -42,7 +42,7 @@ var vizInit = function () {
     var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    var icosahedronGeometry = new THREE.IcosahedronGeometry(10, 3);
+    var icosahedronGeometry = new THREE.IcosahedronGeometry(10, 4);
     //var mapping = new THREE.TextureLoader().load('mapping.png');
     var material = new THREE.MeshNormalMaterial();
 
@@ -61,7 +61,7 @@ var vizInit = function () {
       group.add(balls)
     }
 
-    for (let i = 0; i < 300; i++) {
+    for (let i = 0; i < 2000; i++) {
       var smaller = new THREE.Mesh(
         new THREE.SphereGeometry(0.25, 6, 6),
         new THREE.MeshBasicMaterial({ color: 0xffffff })
