@@ -8,4 +8,4 @@ There is a small chance that bit crushed music may cause irregularities. Please 
 Demo:
 
 
-[![Video](capture.png)]([https://youtu.be/Gy7bzx0A90I](https://www.youtube.com/watch?v=Gy7bzx0A90I)https://www.youtube.com/watch?v=Gy7bzx0A90I)
+[![Thumbnail](https://img.youtube.com/vi/Gy7bzx0A90I/0.jpg)](https://www.youtube.com/watch?v=Gy7bzx0A90I&feature=youtu.be)
