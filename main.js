@@ -42,7 +42,7 @@ var vizInit = function () {
     var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    var icosahedronGeometry = new THREE.IcosahedronGeometry(10, 4);
+    var icosahedronGeometry = new THREE.IcosahedronGeometry(10, 5);
     //var mapping = new THREE.TextureLoader().load('mapping.png');
     var material = new THREE.MeshNormalMaterial();
 
@@ -104,10 +104,10 @@ var vizInit = function () {
         document.body.style.backgroundColor = 'rgb(' + colour + ',' + colour + ',' + colour + ')';
       }
 
-      var lowerMaxFr = lowerMax / lowerHalfArray.length;
-      var lowerAvgFr = lowerAvg / lowerHalfArray.length;
-      var upperMaxFr = upperMax / upperHalfArray.length;
-      var upperAvgFr = upperAvg / upperHalfArray.length;
+      var lowerMaxFr = lowerMax / lowerHalfArray.length / 1.255;
+      var lowerAvgFr = lowerAvg / lowerHalfArray.length / 1.255;
+      var upperMaxFr = upperMax / upperHalfArray.length / 1.255;
+      var upperAvgFr = upperAvg / upperHalfArray.length / 1.255;
 
       makeRoughBall(ball, modulate(Math.pow(lowerMaxFr, 0.8), 0, 1, 0, 8), modulate(upperAvgFr, 0, 1, 0, 4));
 
