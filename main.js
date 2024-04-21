@@ -42,7 +42,7 @@ var vizInit = function () {
     var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    var icosahedronGeometry = new THREE.IcosahedronGeometry(10, 3);
+    var icosahedronGeometry = new THREE.IcosahedronGeometry(10, 5);
     //var mapping = new THREE.TextureLoader().load('mapping.png');
     var material = new THREE.MeshNormalMaterial();
 
