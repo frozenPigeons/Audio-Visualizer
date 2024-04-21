@@ -109,7 +109,7 @@ var vizInit = function () {
       var upperMaxFr = upperMax / upperHalfArray.length / 1.255;
       var upperAvgFr = upperAvg / upperHalfArray.length / 1.255;
 
-      makeRoughBall(ball, modulate(Math.pow(upperAvgFr, 0.8), 0, 1, 0, 8), modulate(lowerMaxFr, 0, 1, 0, 4));
+      makeRoughBall(ball, modulate(Math.pow(upperMaxFr, 0.8), 0, 1, 0, 8), modulate(lowerAvgFr, 0, 1, 0, 4));
 
       group.rotation.y += 0.005;
       group.rotation.z += 0.002;
